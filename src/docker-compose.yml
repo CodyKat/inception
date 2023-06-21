@@ -1,0 +1,49 @@
+version: '3'
+
+volumes: {}
+networks:
+  infra:
+    driver: bridge
+
+services:
+  nginx:
+    depends_on:
+      - "wordpress"
+    build:
+      context: ./requirement/nginx
+      dockerfile: Dockerfile
+    networks:
+      - infra
+    volumes:
+      - ./data/wordpress:/var/www/html
+    ports:
+      - 443:443
+    restart : always
+
+  wordpress:
+    build:
+      context: ./requirement/wordpress
+      dockerfile: Dockerfile
+    depends_on:
+      - mariadb
+    networks:
+      - infra
+    volumes:
+      - ./data/wordpress:/var/www/html
+    env_file:
+      - .env
+    restart : always
+
+
+  mariadb:
+    build:
+      context: ./requirement/mariadb
+      dockerfile: Dockerfile
+    networks:
+      - infra
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+    env_file:
+      - .env
+    stdin_open: true
+    restart : always

@@ -1,0 +1,17 @@
+FROM debian:bullseye-slim
+# RUN apt-get update && apt-get upgrade
+# RUN apt-get install -y mariadb-server
+# RUN apt-get install -y vim
+# RUN apt-get install -y dumb-init
+COPY ./tools/start.sh /start.sh
+# COPY ./conf/mysqld.cnf /etc/mysql/mariadb.conf.d/
+# COPY ./conf/mysqld.cnf /etc/mysql/
+# COPY ./conf/mysqld.cnf /etc/mysql/conf.d/
+RUN chmod +x /start.sh
+EXPOSE 3306
+# RUN sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+# dumb-init
+# ENTRYPOINT [ "dumb-init", "--" ]
+CMD [ "/start.sh" ]
+
+ENTRYPOINT [ "tail", "-f", "/dev/null" ]
