@@ -17,7 +17,6 @@ EXPOSE 9000
 RUN mkdir -p /run/php/
 RUN touch /run/php/php7.4-fpm.sock
 RUN echo "[global]\ndaemonize = no" >> /etc/php/7.4/fpm/php-fpm.conf
-# RUN echo "listen = /run/php/php7.4-fpm.sock" >> /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./tools/start-script.sh /start-script.sh
 RUN chmod +x /start-script.sh

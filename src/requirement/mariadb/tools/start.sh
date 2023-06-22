@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mysql_install_db --skip-test-db # --user=jaemjeon --datadir=/var/lib/mysql
+mysql_install_db --skip-test-db
 chown -R mysql:mysql /var/lib/mysql
 STATUS="$(service mariadb status)"
 echo "try booting mariadb.."
@@ -22,7 +22,6 @@ fi
 echo mariadb database = $MARIADB_DATABASE
 
 if [ ! -d /var/lib/mariadb/$MARIADB_DATABASE ]; then
-    # user mysql in shell script
     mysql -e "CREATE DATABASE IF NOT EXISTS $MARIADB_DATABASE;\
                 CREATE USER IF NOT EXISTS '$MARIADB_USER'@'%';\
                 SET PASSWORD for '$MARIADB_USER'@'%'= PASSWORD('$MARIADB_PASSWORD');\
