@@ -19,4 +19,4 @@ else
     done
 fi
 
-# mysql < init.sql
+mysql < init.sql
