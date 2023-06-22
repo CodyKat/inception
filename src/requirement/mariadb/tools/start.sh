@@ -1,4 +1,15 @@
 #!/bin/bash
-chown -R mysql:mysql /var/lib/mysql
-# service mariadb start
-# exec mysqld_safe
+STATUS="$(service mariadb status)"
+if [ "${STATUS}" != "MariaDB is stopped.." ]; then
+    echo "mariadb is running"
+else
+    service mariadb start
+    while :
+    do
+        STATUS="$(service mariadb status)"
+        if [ "${STATUS}" != "MariaDB is stopped.." ]; then
+            break
+        fi
+    done
+fi
+exec mysqld
