@@ -13,11 +13,6 @@ RUN apt-get update && apt-get install -y\
 	vim
 
 
-# RUN wget https://wordpress.org/latest.tar.gz && \
-# 	tar -xzf latest.tar.gz && \
-# 	mv wordpress/* . && \
-# 	rm -rf wordpress latest.tar.gz
-
 EXPOSE 9000
 RUN mkdir -p /run/php/
 RUN touch /run/php/php7.4-fpm.sock

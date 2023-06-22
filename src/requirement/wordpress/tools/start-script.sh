@@ -3,8 +3,6 @@ if [ -f /var/www/html/wp-config.php ]
 then
 	echo wordpress already installed
 else
-	echo hello
-	pwd
 	wget https://wordpress.org/latest.tar.gz
 	tar -xf latest.tar.gz
 	mv wordpress/* /var/www/html/
