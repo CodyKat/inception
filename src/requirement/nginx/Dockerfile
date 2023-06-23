@@ -4,10 +4,7 @@ RUN apt-get update && \
 	nginx \
 	openssl \
 	vim
-	# mariadb-client \
 COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
-COPY ./tools/certs /certs
-RUN chmod +x /certs/certs.sh
-# ENTRYPOINT ["/certs/certs.sh"]
-# ENTRYPOINT ["nginx", "-g", "daemon off;"]
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+COPY ./tools/certs/lesstif.com.crt /etc/ssl/certs
+COPY ./tools/certs/lesstif.com.key /etc/ssl/certs
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
