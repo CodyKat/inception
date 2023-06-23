@@ -7,8 +7,7 @@ RUN apt-get update && \
 	# mariadb-client \
 COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
 COPY ./tools/certs /certs
-WORKDIR /certs
-RUN chmod +x certs.sh
-RUN certs.sh
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+RUN chmod +x /certs/certs.sh
+ENTRYPOINT ["/certs/certs.sh"]
+# ENTRYPOINT ["nginx", "-g", "daemon off;"]
 # ENTRYPOINT ["tail", "-f", "/dev/null"]

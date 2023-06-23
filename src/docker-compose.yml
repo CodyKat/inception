@@ -19,6 +19,7 @@ services:
     ports:
       - 443:443
     restart : always
+    tty: true
 
   wordpress:
     build:
