@@ -15,15 +15,18 @@ up : all
 down :
 	$(DC) -f $(DC_SRC) down
 
-build :
-	$(DC) -f $(DC_SRC) build -t ${NAME}
-
-build-re :
-	$(DC) -f $(DC_SRC) build --no-cache
-
 clean :
 	$(DC) -f $(DC_SRC) down --rmi all
 	# $(DC) -f $(DC_SRC) rm
+
+build :
+	$(DC) -f $(DC_SRC) build
+
+build-nocache :
+	$(DC) -f $(DC_SRC) build --no-cache
+
+restart :
+	$(DC) -f $(DC_SRC) restart
 
 clean-vol :
 	rm -rf $(VOLDIR)
@@ -31,3 +34,5 @@ clean-vol :
 fclean : clean clean-vol
 
 re : fclean all
+
+.PHONY: all up down clean build build-nocache restart clean-vol fclean re
