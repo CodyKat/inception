@@ -12,6 +12,7 @@ services:
     build:
       context: ./requirement/nginx
       dockerfile: Dockerfile
+    image: nginx:tag
     networks:
       - infra
     volumes:
@@ -21,11 +22,12 @@ services:
     restart : always
 
   wordpress:
+    depends_on:
+      - mariadb
     build:
       context: ./requirement/wordpress
       dockerfile: Dockerfile
-    depends_on:
-      - mariadb
+    image: wordpress:tag
     networks:
       - infra
     volumes:
@@ -39,6 +41,7 @@ services:
     build:
       context: ./requirement/mariadb
       dockerfile: Dockerfile
+    image: mariadb:tag
     networks:
       - infra
     volumes:
