@@ -15,4 +15,4 @@ else
 	cp wp-config-sample.php wp-config.php
 fi
 chown -R www-data:www-data /var/www/html
-exec "$@"
+exec php-fpm7.4 -F

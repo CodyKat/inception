@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y\
 	php7.4-gd \
 	php7.4-cli \
 	php7.4-mbstring \
-	php-redis
+	php-redis \
+	dumb-init
 
 
 EXPOSE 9000
@@ -20,5 +21,5 @@ COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./tools/start-script.sh /start-script.sh
 RUN chmod +x /start-script.sh
 WORKDIR /var/www/html/
-ENTRYPOINT ["/start-script.sh"]
-CMD ["php-fpm7.4", "-F"]
+ENTRYPOINT [ "dumb-init", "--" ]
+CMD [ "/start-script.sh" ]
