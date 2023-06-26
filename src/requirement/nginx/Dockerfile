@@ -10,4 +10,3 @@ COPY ./tools/certs/lesstif.com.crt /etc/ssl/certs
 COPY ./tools/certs/lesstif.com.key /etc/ssl/certs
 ENTRYPOINT [ "dumb-init", "--" ]
 CMD ["nginx", "-g", "daemon off;"]
-# CMD ["/bin/bash;"]

@@ -36,7 +36,6 @@ services:
       - .env
     restart : always
 
-
   mariadb:
     build:
       context: ./requirement/mariadb
