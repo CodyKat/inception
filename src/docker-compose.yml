@@ -8,7 +8,7 @@ networks:
 services:
   nginx:
     depends_on:
-      - "wordpress"
+      - wordpress
     build:
       context: ./requirement/nginx
       dockerfile: Dockerfile
@@ -16,7 +16,7 @@ services:
     networks:
       - infra
     volumes:
-      - ./data/wordpress:/var/www/html
+      - /home/jaemjeon/data/wordpress:/var/www/html
     ports:
       - 443:443
     restart : always
@@ -31,7 +31,7 @@ services:
     networks:
       - infra
     volumes:
-      - ./data/wordpress:/var/www/html
+      - /home/jaemjeon/data/wordpress:/var/www/html
     env_file:
       - .env
     restart : always
@@ -44,7 +44,7 @@ services:
     networks:
       - infra
     volumes:
-      - ./data/mariadb:/var/lib/mysql
+      - /home/jaemjeon/data/mariadb:/var/lib/mysql
     env_file:
       - .env
     restart : always

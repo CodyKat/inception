@@ -18,6 +18,7 @@ RUN mkdir -p /run/php/
 RUN touch /run/php/php7.4-fpm.sock
 COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./tools/start-script.sh /start-script.sh
+WORKDIR /var/www/html
 RUN chmod +x /start-script.sh
 ENTRYPOINT [ "dumb-init", "--" ]
 CMD [ "/start-script.sh" ]
