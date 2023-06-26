@@ -19,12 +19,11 @@ else
     done
 fi
 
-echo mariadb database = $MARIADB_DATABASE
-
 if [ ! -d /var/lib/mariadb/$MARIADB_DATABASE ]; then
     mysql -e "CREATE DATABASE IF NOT EXISTS $MARIADB_DATABASE;\
                 CREATE USER IF NOT EXISTS '$MARIADB_USER'@'localhost';\
                 SET PASSWORD for '$MARIADB_USER'@'localhost'= PASSWORD('$MARIADB_PASSWORD');\
+                SET PASSWORD for 'root'@'localhost'= PASSWORD('$MARIADB_ROOT_PASSWORD');\
                 GRANT all privileges on $MARIADB_DATABASE.* to '$MARIADB_USER'@'%' identified by '$MARIADB_PASSWORD';\
                 FLUSH privileges;"
 fi
