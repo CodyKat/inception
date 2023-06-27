@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y\
 	php7.4-cli \
 	php7.4-mbstring \
 	php-redis \
+	curl \
 	dumb-init
 
 
