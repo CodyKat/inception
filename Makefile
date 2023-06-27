@@ -2,8 +2,8 @@ NAME = inception
 
 DC = docker compose
 
-DC_SRC = ./src/docker-compose.yml
-VOLDIR = ./src/data
+DC_SRC = ./srcs/docker-compose.yml
+VOLDIR = ./srcs/data
 
 all : ${NAME}
 
