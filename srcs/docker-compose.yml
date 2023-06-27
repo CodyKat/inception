@@ -19,7 +19,11 @@ services:
     networks:
       - infra
     volumes:
-      - wordpress-db:/var/www/html
+      - type: volume
+        source: wordpress-db
+        target: /var/www/html
+        volume:
+          nocopy: true
     ports:
       - 443:443
     restart : always
@@ -34,7 +38,11 @@ services:
     networks:
       - infra
     volumes:
-      - wordpress-db:/var/www/html
+      - type: volume
+        source: wordpress-db
+        target: /var/www/html
+        volume:
+          nocopy: true
     env_file:
       - .env
     restart : always
@@ -47,7 +55,11 @@ services:
     networks:
       - infra
     volumes:
-      - mariadb-db:/var/lib/mysql
+      - type: volume
+        source: mariadb-db
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
     env_file:
       - .env
     restart : always
