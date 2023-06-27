@@ -19,7 +19,7 @@ else
     done
 fi
 
-if [ ! -d /var/lib/mariadb/$MARIADB_DATABASE ]; then
+if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
     mysql -e "CREATE DATABASE IF NOT EXISTS $MARIADB_DATABASE;\
                 CREATE USER IF NOT EXISTS '$MARIADB_USER'@'localhost';\
                 SET PASSWORD for '$MARIADB_USER'@'localhost'= PASSWORD('$MARIADB_PASSWORD');\
@@ -28,9 +28,9 @@ if [ ! -d /var/lib/mariadb/$MARIADB_DATABASE ]; then
                 FLUSH privileges;"
 fi
 
-mysqladmin -uroot -p password '$MARIADB_ROOT_PASSWORD'
+# mysqladmin -uroot -p password '$MARIADB_ROOT_PASSWORD'
 
-service mariadb stop
+# service mariadb stop
 echo "try rebooting mariadb.."
 if [ "${STATUS}" = "MariaDB is stopped.." ]; then
     echo "mariadb is stopped"

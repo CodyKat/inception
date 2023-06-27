@@ -1,12 +1,11 @@
 version: '3'
 
-volumes:
-  wordpress-db:
-  mariadb-db:
-
 networks:
   infra:
     driver: bridge
+volumes:
+  wordpress-db:
+  mariadb-db:
 
 services:
   nginx:
@@ -19,11 +18,7 @@ services:
     networks:
       - infra
     volumes:
-      - type: volume
-        source: wordpress-db
-        target: /var/www/html
-        volume:
-          nocopy: true
+      - wordpress-db:/var/www/html
     ports:
       - 443:443
     restart : always
@@ -38,11 +33,7 @@ services:
     networks:
       - infra
     volumes:
-      - type: volume
-        source: wordpress-db
-        target: /var/www/html
-        volume:
-          nocopy: true
+      - wordpress-db:/var/www/html
     env_file:
       - .env
     restart : always
@@ -55,11 +46,7 @@ services:
     networks:
       - infra
     volumes:
-      - type: volume
-        source: mariadb-db
-        target: /var/lib/mysql
-        volume:
-          nocopy: true
+      - mariadb-db:/var/lib/mysql
     env_file:
       - .env
     restart : always

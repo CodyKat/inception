@@ -17,7 +17,7 @@ down :
 
 clean :
 	$(DC) -f $(DC_SRC) down --rmi all
-	# $(DC) -f $(DC_SRC) rm
+	$(DC) -f $(DC_SRC) rm
 
 build :
 	$(DC) -f $(DC_SRC) build
@@ -30,6 +30,7 @@ restart :
 
 clean-vol :
 	rm -rf $(VOLDIR)
+	$(DC) -f $(DC_SRC) down -v
 
 fclean : clean clean-vol
 
