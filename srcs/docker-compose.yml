@@ -1,6 +1,9 @@
 version: '3'
 
-volumes: {}
+volumes:
+  wordpress-db:
+  mariadb-db:
+
 networks:
   infra:
     driver: bridge
@@ -16,7 +19,7 @@ services:
     networks:
       - infra
     volumes:
-      - /home/jaemjeon/data/wordpress:/var/www/html
+      - wordpress-db:/var/www/html
     ports:
       - 443:443
     restart : always
@@ -31,7 +34,7 @@ services:
     networks:
       - infra
     volumes:
-      - /home/jaemjeon/data/wordpress:/var/www/html
+      - wordpress-db:/var/www/html
     env_file:
       - .env
     restart : always
@@ -44,7 +47,7 @@ services:
     networks:
       - infra
     volumes:
-      - /home/jaemjeon/data/mariadb:/var/lib/mysql
+      - mariadb-db:/var/lib/mysql
     env_file:
       - .env
     restart : always
