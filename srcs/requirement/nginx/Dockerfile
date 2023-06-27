@@ -6,9 +6,8 @@ RUN apt-get update && \
 	vim \
 	dumb-init
 COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
-COPY ./tools/certs/lesstif.com.crt /etc/ssl/certs
-COPY ./tools/certs/lesstif.com.key /etc/ssl/certs
 RUN sed -i 's/TLSv1 TLSv1.1//g' etc/nginx/nginx.conf
+COPY ./tools/start.sh /start.sh
+RUN chmod +x /start.sh
 ENTRYPOINT [ "dumb-init", "--" ]
-#RUN ["./tools/start.sh"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/start.sh"]

@@ -28,9 +28,6 @@ if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
                 FLUSH privileges;"
 fi
 
-# mysqladmin -uroot -p password '$MARIADB_ROOT_PASSWORD'
-
-# service mariadb stop
 echo "try rebooting mariadb.."
 if [ "${STATUS}" = "MariaDB is stopped.." ]; then
     echo "mariadb is stopped"
