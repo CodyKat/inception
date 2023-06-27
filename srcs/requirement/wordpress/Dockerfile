@@ -22,4 +22,4 @@ COPY ./tools/start-script.sh /start-script.sh
 WORKDIR /var/www/html
 RUN chmod +x /start-script.sh
 ENTRYPOINT [ "dumb-init", "--" ]
-CMD [ "/start-script.sh" ]
+CMD [ "bash", "-c", "/start-script.sh" ]

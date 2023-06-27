@@ -18,9 +18,10 @@ else
 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 	chmod +x wp-cli.phar
 	mv wp-cli.phar /usr/local/bin/wp
-	wp core install --admin_user=$WORDPRESS_ADMIN_USER --admin_email=$WORDPRESS_ADMIN_USER@gmail.com --url=http://$WORDPRESS_USER.42.fr --title=$WORDPRESS_TITLE --allow-root
+	wp core install --admin_user="$WORDPRESS_ADMIN_USER" --admin_email="$WORDPRESS_ADMIN_USER"@gmail.com --url=https://localhost --title=$WORDPRESS_TITLE --allow-root
 	wp user create jaemjeon jaemjeon@gmail.com --role=author --allow-root
-	wp user update 2 --user_pass=$WORDPRESS_DB_USER --allow-root
+	wp user update jaemjeon --user_pass="$WORDPRESS_PASSWORD" --allow-root
+	wp user update rooty --user_pass="$WORDPRESS_ADMIN_PASSWORD" --allow-root
 fi
 chown -R www-data:www-data /var/www/html
 exec php-fpm7.4 -F
