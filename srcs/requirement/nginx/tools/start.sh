@@ -1,7 +1,5 @@
 #!/bin/bash
 
-DOMAIN="jaemjeon.42.fr"
-
 # Generate a new private key
 openssl genrsa -out "/etc/ssl/private/${DOMAIN}.key" 2048
 
