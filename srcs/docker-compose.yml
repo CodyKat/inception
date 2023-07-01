@@ -10,14 +10,14 @@ volumes:
       driver_opts:
         type: volumes
         o: bind
-        device: ${PWD}/srcs/data/mariadb
+        device: /home/jaemjeon/data/mariadb
     wordpress-db:
       name: wp_vol
       driver: local
       driver_opts:
         type: volumes
         o: bind
-        device: ${PWD}/srcs/data/wordpress
+        device: /home/jaemjeon/data/wordpress
 services:
   nginx:
     depends_on:

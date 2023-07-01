@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y\
 	curl \
 	dumb-init
 
-
 EXPOSE 9000
 RUN mkdir -p /run/php/
 RUN touch /run/php/php7.4-fpm.sock
