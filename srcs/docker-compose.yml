@@ -25,7 +25,7 @@ services:
     build:
       context: ./requirement/nginx
       dockerfile: Dockerfile
-    image: nginx:tag
+    image: nginx:jaemjeon
     networks:
       - infra
     volumes:
@@ -42,7 +42,7 @@ services:
     build:
       context: ./requirement/wordpress
       dockerfile: Dockerfile
-    image: wordpress:tag
+    image: wordpress:jaemjeon
     networks:
       - infra
     volumes:
@@ -55,7 +55,7 @@ services:
     build:
       context: ./requirement/mariadb
       dockerfile: Dockerfile
-    image: mariadb:tag
+    image: mariadb:jaemjeon
     networks:
       - infra
     volumes:
