@@ -5,14 +5,12 @@ networks:
     driver: bridge
 volumes:
     mariadb-db:
-      name: db_vol
       driver: local
       driver_opts:
         type: volumes
         o: bind
         device: /home/jaemjeon/data/mariadb
     wordpress-db:
-      name: wp_vol
       driver: local
       driver_opts:
         type: volumes

@@ -1,6 +1,6 @@
 NAME = inception
 
-DC = docker compose
+DC = docker-compose
 
 DC_SRC = ./srcs/docker-compose.yml
 VOLDIR = /home/jaemjeon/data
