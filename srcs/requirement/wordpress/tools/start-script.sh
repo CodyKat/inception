@@ -16,7 +16,6 @@ else
 	echo "define('WP_SITEURL', 'https://jaemjeon.42.fr');" >> wp-config-sample.php
 	cp wp-config-sample.php wp-config.php
 
-	touch bug
 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 	chmod +x wp-cli.phar
 	mv wp-cli.phar /usr/local/bin/wp
