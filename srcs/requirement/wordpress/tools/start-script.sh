@@ -12,6 +12,8 @@ else
 	sed -i "s/password_here/$WORDPRESS_DB_PASSWORD/g" wp-config-sample.php
 	sed -i "s/localhost/$WORDPRESS_DB_HOST/g" wp-config-sample.php
 	sed -i "s/database_name_here/$WORDPRESS_DB_NAME/g" wp-config-sample.php
+	echo "define('WP_HOME', 'https://jaemjeon.42.fr');" >> wp-config-sample.php
+	echo "define('WP_SITEURL', 'https://jaemjeon.42.fr');" >> wp-config-sample.php
 	cp wp-config-sample.php wp-config.php
 
 	touch bug
