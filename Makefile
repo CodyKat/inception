@@ -8,6 +8,12 @@ VOLDIR = /home/jaemjeon/data
 all : ${NAME}
 
 ${NAME} :
+	if [ -d $(VOLDIR) ]; then \
+		echo "data dir exist!"; \
+	else \
+		mkdir -p $(VOLDIR)/wordpress; \
+		mkdir -p $(VOLDIR)/mariadb; \
+	fi
 	$(DC) -f $(DC_SRC) up -d
 
 up : all
@@ -38,4 +44,4 @@ fclean : clean clean-vol
 
 re : fclean all
 
-.PHONY: all up down clean build build-nocache restart clean-vol fclean re
+.PHONY: all up down stop clean build build-nocache restart clean-vol fclean re

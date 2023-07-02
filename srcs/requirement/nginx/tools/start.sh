@@ -8,4 +8,5 @@ openssl req -new -key "/etc/ssl/private/${DOMAIN}.key" -out "/etc/ssl/certs/${DO
 
 # Sign the CSR with our own private key to create the cert
 openssl x509 -req -days 365 -in "/etc/ssl/certs/${DOMAIN}.csr" -signkey "/etc/ssl/private/${DOMAIN}.key" -out "/etc/ssl/certs/${DOMAIN}.crt"
+
 exec nginx -g 'daemon off;'
